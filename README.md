@@ -4,11 +4,16 @@ Introduction
 ------------
 - Android CodeLabで作ったアプリです。
 - アプリ名称: Words App  
-- 明示的インテントで画面遷移し、暗黙的インテントで選択した単語をGoogle検索します。
   
 ### アクティビティとインテント ###
 https://developer.android.com/codelabs/basic-android-kotlin-training-activities-intents?hl=ja  
+  
+- 明示的インテントで画面遷移し、暗黙的インテントで選択した単語をGoogle検索します。
 
+### フラグメントとナビゲーション コンポーネント ###
+https://developer.android.com/codelabs/basic-android-kotlin-training-fragments-navigation-component?hl=ja
+  
+- fragmentとnavigationを使用して、1つのアクティビティ内に複数のfragmentを実装。
 
 アプリ画面
 ----  
