@@ -10,10 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wordsapp.databinding.FragmentLetterListBinding
 
 class LetterListFragment : Fragment() {
-
     private var _binding: FragmentLetterListBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
+
     private lateinit var recyclerView: RecyclerView
+    // Keeps track of which LayoutManager is in use for the [RecyclerView]
     private var isLinearLayoutManager = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,7 @@ class LetterListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Retrieve and inflate the layout for this fragment
         _binding = FragmentLetterListBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -33,6 +38,8 @@ class LetterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.recyclerView
+        // Sets the LayoutManager of the recyclerview
+        // On the first run of the app, it will be LinearLayoutManager
         chooseLayout()
     }
 
@@ -48,16 +55,19 @@ class LetterListFragment : Fragment() {
         setIcon(layoutButton)
     }
 
-    // 選択したリスト形状に基づいて、リスト表示の縦・横を切り替える
+    /**
+     * Sets the LayoutManager for the [RecyclerView] based on the desired orientation of the list.
+     *
+     * Notice that because the enclosing class has changed from an Activity to a Fragment,
+     * the signature of the LayoutManagers has to slightly change.
+     */
     private fun chooseLayout() {
         when (isLinearLayoutManager) {
             true -> {
                 recyclerView.layoutManager = LinearLayoutManager(context)
-
             }
             false -> {
                 recyclerView.layoutManager = GridLayoutManager(context, 4)
-
             }
         }
         recyclerView.adapter = LetterAdapter()
@@ -74,7 +84,9 @@ class LetterListFragment : Fragment() {
             else ContextCompat.getDrawable(this.requireContext(), R.drawable.ic_linear_layout)
     }
 
-    // ボタンが選択されたときに、実際に chooseLayout() を呼び出します
+    /**
+     * Determines how to handle interactions with the selected [MenuItem]
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {

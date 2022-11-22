@@ -63,9 +63,14 @@ class LetterAdapter :
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val item = list.get(position)
         holder.button.text = item.toString()
+
+        // Assigns a [OnClickListener] to the button contained in the [ViewHolder]
         holder.button.setOnClickListener {
+            // Create an action from WordList to DetailList
+            // using the required arguments
             val action =
                 LetterListFragmentDirections.actionLetterListFragmentToWordListFragment(letter = holder.button.text.toString())
+            // Navigate using that action
             holder.view.findNavController().navigate(action)
         }
     }
