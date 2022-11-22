@@ -15,6 +15,14 @@ https://developer.android.com/codelabs/basic-android-kotlin-training-fragments-n
   
 - fragmentとnavigationを使用して、1つのアクティビティ内に複数のfragmentを実装。
 
+### Navigation コンポーネントをテストする ###
+https://developer.android.com/codelabs/android-basics-kotlin-test-navigation-components?hl=ja
+- テストクラス、Navigationコンポーネントテストの追加
+- 解答コード
+  - https://github.com/google-developer-training/android-basics-kotlin-words-app/tree/nav_test_solution
+
+
+
 アプリ画面
 ----  
 ### 静止画 ###
